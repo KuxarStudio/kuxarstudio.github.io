@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Kuxar Studio | Android & Digital Development</title>
+    <title>Kuxar Studio | Code · Apps · Programs</title>
 
     <!-- SEO -->
     <meta name="description" content="Kuxar Studio es un estudio independiente enfocado en desarrollo Android y soluciones digitales modernas.">
     <meta property="og:title" content="Kuxar Studio">
-    <meta property="og:description" content="Estudio independiente de desarrollo Android y soluciones digitales.">
+    <meta property="og:description" content="Code · Apps · Programs">
     <meta property="og:type" content="website">
 
-    <!-- Favicon (añade tu archivo favicon.png en la raíz) -->
-    <link rel="icon" type="image/png" href="favicon.png">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo.png">
 
-    <!-- Google Font -->
+    <!-- Fuente moderna -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
     <style>
@@ -23,14 +23,14 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            transition: all 0.3s ease;
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            background: #0f1115;
+            background: radial-gradient(circle at top, #141824, #0b0d12 70%);
             color: #eaeaea;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .container {
@@ -39,9 +39,18 @@
             padding: 40px 20px;
         }
 
+        /* HERO */
+
         header {
             text-align: center;
-            padding: 80px 20px;
+            padding: 100px 20px;
+            animation: fadeIn 1.2s ease forwards;
+        }
+
+        header img {
+            width: 180px;
+            margin-bottom: 30px;
+            animation: float 4s ease-in-out infinite;
         }
 
         h1 {
@@ -57,17 +66,18 @@
         }
 
         .hero-buttons {
-            margin-top: 30px;
+            margin-top: 35px;
         }
 
         .btn {
             display: inline-block;
-            padding: 12px 28px;
+            padding: 14px 30px;
             margin: 10px;
             border-radius: 40px;
             text-decoration: none;
             font-weight: 600;
             font-size: 0.95rem;
+            transition: all 0.3s ease;
         }
 
         .btn-primary {
@@ -75,13 +85,24 @@
             color: white;
         }
 
+        .btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.3);
+        }
+
         .btn-secondary {
-            border: 1px solid #444;
+            border: 1px solid #333;
             color: #ccc;
         }
 
+        .btn-secondary:hover {
+            background: #1a1f2e;
+        }
+
+        /* SECCIONES */
+
         section {
-            margin-top: 80px;
+            margin-top: 100px;
         }
 
         h2 {
@@ -90,58 +111,52 @@
             font-weight: 600;
         }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-        }
-
         .card {
-            background: #171a21;
-            padding: 30px;
-            border-radius: 18px;
-            border: 1px solid #222;
+            background: #141824;
+            padding: 35px;
+            border-radius: 20px;
+            border: 1px solid #1f2433;
+            transition: all 0.4s ease;
         }
 
         .card:hover {
             transform: translateY(-8px);
-            border: 1px solid #333;
-        }
-
-        .card h3 {
-            margin-bottom: 15px;
+            border: 1px solid #2d3347;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
         }
 
         .card p {
-            color: #aaa;
-            font-size: 0.95rem;
-        }
-
-        .contact-box {
-            background: #171a21;
-            padding: 30px;
-            border-radius: 18px;
-            border: 1px solid #222;
-        }
-
-        .contact-box a {
-            color: #00d4ff;
-            text-decoration: none;
-            font-weight: 600;
+            color: #b5b5b5;
         }
 
         footer {
             text-align: center;
-            margin-top: 100px;
+            margin-top: 120px;
             padding: 40px 20px;
-            color: #777;
+            color: #666;
             font-size: 0.85rem;
-            border-top: 1px solid #222;
+            border-top: 1px solid #1a1f2e;
+        }
+
+        /* Animaciones */
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0px); }
         }
 
         @media (max-width: 600px) {
             h1 {
                 font-size: 2.2rem;
+            }
+            header img {
+                width: 140px;
             }
         }
     </style>
@@ -150,11 +165,12 @@
 <body>
 
     <header class="container">
+        <img src="logo.png" alt="Kuxar Studio Logo">
         <h1>Kuxar Studio</h1>
-        <p class="tagline">Estudio independiente especializado en desarrollo Android y soluciones digitales modernas.</p>
+        <p class="tagline">Code · Apps · Programs</p>
 
         <div class="hero-buttons">
-            <a href="#proyectos" class="btn btn-primary">Ver Proyectos</a>
+            <a href="#sobre" class="btn btn-primary">Explorar</a>
             <a href="#contacto" class="btn btn-secondary">Contacto</a>
         </div>
     </header>
@@ -163,48 +179,33 @@
         <h2>Sobre el Estudio</h2>
         <div class="card">
             <p>
-                Kuxar Studio es un estudio independiente enfocado en la creación de aplicaciones Android
-                utilizando tecnologías modernas como Kotlin y las herramientas oficiales del ecosistema Android.
-                El objetivo es construir productos digitales eficientes, seguros y alineados con los estándares actuales.
+                Kuxar Studio es un estudio independiente especializado en desarrollo Android
+                y soluciones digitales modernas. Enfocado en tecnologías actuales como Kotlin,
+                arquitectura limpia y buenas prácticas del ecosistema móvil.
             </p>
         </div>
     </section>
 
-    <section class="container" id="proyectos">
-        <h2>Proyectos</h2>
-
-        <div class="grid">
-            <div class="card">
-                <h3>Aplicaciones Android</h3>
-                <p>Desarrollo y pruebas de aplicaciones enfocadas en rendimiento, usabilidad y cumplimiento con Google Play Store.</p>
-            </div>
-
-            <div class="card">
-                <h3>Experimentación Técnica</h3>
-                <p>Exploración continua de nuevas APIs, arquitectura moderna (MVVM) y buenas prácticas en desarrollo móvil.</p>
-            </div>
-
-            <div class="card">
-                <h3>Próximos Lanzamientos</h3>
-                <p>Nuevas herramientas y soluciones digitales actualmente en fase de desarrollo y optimización.</p>
-            </div>
-        </div>
-    </section>
-
     <section class="container" id="contacto">
-        <h2>Contacto & Soporte</h2>
-
-        <div class="contact-box">
-            <p>Para consultas técnicas, soporte o colaboraciones:</p>
-            <p><strong>Email:</strong> <a href="mailto:jack.projekts@gmail.com">jack.projekts@gmail.com</a></p>
+        <h2>Contacto</h2>
+        <div class="card">
+            <p>Consultas técnicas, soporte o colaboraciones:</p>
             <p style="margin-top:15px;">
-                <a href="privacy.html">Leer Política de Privacidad</a>
+                <strong>Email:</strong>
+                <a href="mailto:jack.projekts@gmail.com" style="color:#00d4ff;">
+                    jack.projekts@gmail.com
+                </a>
+            </p>
+            <p style="margin-top:15px;">
+                <a href="privacy.html" style="color:#888;">
+                    Política de Privacidad
+                </a>
             </p>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Kuxar Studio. Todos los derechos reservados.</p>
+        &copy; 2026 Kuxar Studio. Todos los derechos reservados.
     </footer>
 
 </body>
