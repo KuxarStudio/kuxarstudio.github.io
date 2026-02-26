@@ -6,16 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kuxar Studio | Code · Apps · Programs</title>
 
-    <!-- SEO -->
     <meta name="description" content="Kuxar Studio es un estudio independiente enfocado en desarrollo Android y soluciones digitales modernas.">
     <meta property="og:title" content="Kuxar Studio">
     <meta property="og:description" content="Code · Apps · Programs">
     <meta property="og:type" content="website">
 
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="logo.png">
 
-    <!-- Fuente -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
     <style>
@@ -45,6 +42,8 @@
 
         html {
             scroll-behavior: smooth;
+            /* IMPORTANTE: Evita que el título de las secciones quede oculto tras la navbar */
+            scroll-padding-top: 80px;
         }
 
         body {
@@ -62,7 +61,6 @@
         }
 
         /* NAVBAR */
-
         .navbar {
             position: fixed;
             width: 100%;
@@ -102,11 +100,11 @@
             border-color: var(--accent);
         }
 
-        /* HERO */
-
+        /* HERO / HEADER (ARREGLADO) */
         header {
             text-align: center;
-            padding: 130px 20px 100px;
+            /* Aumentado de 130px a 180px para que el logo no sea cortado por la navbar */
+            padding: 180px 20px 100px;
             animation: fadeIn 1.2s ease forwards;
         }
 
@@ -118,7 +116,7 @@
         }
 
         h1 {
-            font-size: 3rem;
+            font-size: clamp(2rem, 8vw, 3rem); /* Se adapta mejor a móviles */
             font-weight: 800;
         }
 
@@ -150,6 +148,7 @@
 
         .btn-primary:hover {
             transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(110, 0, 255, 0.2);
         }
 
         .btn-secondary {
@@ -162,7 +161,7 @@
         }
 
         section {
-            margin-top: 100px;
+            margin-top: 80px;
         }
 
         h2 {
@@ -212,35 +211,23 @@
 
         @keyframes float {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-12px); } /* Un poco más de movimiento */
             100% { transform: translateY(0px); }
         }
     </style>
-
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PC2C42LC0Z"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-PC2C42LC0Z');
-    </script>
-
 </head>
 
 <body>
 
-    <!-- NAVBAR -->
     <div class="navbar">
         <div class="nav-content">
             <div class="nav-logo">
                 <img src="logo.png" alt="Kuxar Studio">
             </div>
-            <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+            <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙</button>
         </div>
     </div>
 
-    <!-- HERO -->
     <header class="container">
         <img src="logo.png" alt="Kuxar Studio Logo">
         <h1>Kuxar Studio</h1>
@@ -252,7 +239,6 @@
         </div>
     </header>
 
-    <!-- SOBRE -->
     <section class="container" id="sobre">
         <h2>Sobre el Estudio</h2>
         <div class="card">
@@ -263,7 +249,6 @@
         </div>
     </section>
 
-    <!-- SKILLS -->
     <section class="container">
         <h2>Tecnologías</h2>
         <div class="skills">
@@ -277,14 +262,13 @@
         </div>
     </section>
 
-    <!-- CONTACTO -->
     <section class="container" id="contacto">
         <h2>Contacto</h2>
         <div class="card">
             <p>Email:</p>
             <p><strong>jack.projekts@gmail.com</strong></p>
             <p style="margin-top:15px;">
-                <a href="privacy.html">Política de Privacidad</a>
+                <a href="privacy.html" style="color: var(--accent); text-decoration: none;">Política de Privacidad</a>
             </p>
         </div>
     </section>
@@ -294,15 +278,20 @@
     </footer>
 
     <script>
-        function toggleTheme() {
-            document.body.classList.toggle("light");
-            localStorage.setItem("theme",
-                document.body.classList.contains("light") ? "light" : "dark"
-            );
+        function updateToggleButton(isLight) {
+            document.getElementById("themeBtn").innerText = isLight ? "☀️" : "🌙";
         }
 
+        function toggleTheme() {
+            const isLight = document.body.classList.toggle("light");
+            localStorage.setItem("theme", isLight ? "light" : "dark");
+            updateToggleButton(isLight);
+        }
+
+        // Cargar tema guardado
         if (localStorage.getItem("theme") === "light") {
             document.body.classList.add("light");
+            updateToggleButton(true);
         }
     </script>
 
