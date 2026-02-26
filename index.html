@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Kuxar Studio | Code · Apps · Programs</title>
 
     <!-- SEO -->
@@ -15,22 +15,44 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="logo.png">
 
-    <!-- Fuente moderna -->
+    <!-- Fuente -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
     <style>
+        :root {
+            --bg-main: #0b0d12;
+            --bg-secondary: #141824;
+            --text-main: #eaeaea;
+            --text-muted: #a0a0a0;
+            --border: #1f2433;
+            --accent: #00d4ff;
+        }
+
+        body.light {
+            --bg-main: #f4f6fa;
+            --bg-secondary: #ffffff;
+            --text-main: #1a1a1a;
+            --text-muted: #555;
+            --border: #e0e0e0;
+            --accent: #0066ff;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            background: radial-gradient(circle at top, #141824, #0b0d12 70%);
-            color: #eaeaea;
+            background: var(--bg-main);
+            color: var(--text-main);
             line-height: 1.6;
-            overflow-x: hidden;
+            transition: background 0.4s ease, color 0.4s ease;
         }
 
         .container {
@@ -39,30 +61,61 @@
             padding: 40px 20px;
         }
 
-        /* HERO */
+        /* HEADER FIXED */
+
+        .navbar {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: rgba(15, 17, 21, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+
+        .nav-content {
+            max-width: 1100px;
+            margin: auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-weight: 600;
+        }
+
+        .theme-toggle {
+            cursor: pointer;
+            background: none;
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 20px;
+            color: var(--text-main);
+        }
 
         header {
             text-align: center;
-            padding: 100px 20px;
+            padding: 160px 20px 100px;
             animation: fadeIn 1.2s ease forwards;
         }
 
         header img {
-            width: 180px;
-            margin-bottom: 30px;
+            width: 170px;
+            margin-bottom: 25px;
             animation: float 4s ease-in-out infinite;
         }
 
         h1 {
             font-size: 3rem;
             font-weight: 800;
-            letter-spacing: -1px;
         }
 
         .tagline {
-            margin-top: 15px;
+            margin-top: 10px;
             font-size: 1.2rem;
-            color: #a0a0a0;
+            color: var(--text-muted);
         }
 
         .hero-buttons {
@@ -85,21 +138,10 @@
             color: white;
         }
 
-        .btn-primary:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.3);
-        }
-
         .btn-secondary {
-            border: 1px solid #333;
-            color: #ccc;
+            border: 1px solid var(--border);
+            color: var(--text-main);
         }
-
-        .btn-secondary:hover {
-            background: #1a1f2e;
-        }
-
-        /* SECCIONES */
 
         section {
             margin-top: 100px;
@@ -108,37 +150,42 @@
         h2 {
             font-size: 1.8rem;
             margin-bottom: 30px;
-            font-weight: 600;
         }
 
         .card {
-            background: #141824;
+            background: var(--bg-secondary);
             padding: 35px;
             border-radius: 20px;
-            border: 1px solid #1f2433;
-            transition: all 0.4s ease;
+            border: 1px solid var(--border);
+            transition: 0.3s ease;
         }
 
         .card:hover {
-            transform: translateY(-8px);
-            border: 1px solid #2d3347;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            transform: translateY(-6px);
         }
 
-        .card p {
-            color: #b5b5b5;
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill-badge {
+            padding: 8px 16px;
+            border-radius: 30px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            font-size: 0.9rem;
         }
 
         footer {
             text-align: center;
             margin-top: 120px;
             padding: 40px 20px;
-            color: #666;
             font-size: 0.85rem;
-            border-top: 1px solid #1a1f2e;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
         }
-
-        /* Animaciones */
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(30px); }
@@ -147,23 +194,34 @@
 
         @keyframes float {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-12px); }
+            50% { transform: translateY(-10px); }
             100% { transform: translateY(0px); }
         }
-
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 2.2rem;
-            }
-            header img {
-                width: 140px;
-            }
-        }
     </style>
+        
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PC2C42LC0Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PC2C42LC0Z');
+</script>
+
 </head>
 
 <body>
 
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <div class="nav-content">
+            <div class="nav-logo">Kuxar Studio</div>
+            <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+        </div>
+    </div>
+
+    <!-- HERO -->
     <header class="container">
         <img src="logo.png" alt="Kuxar Studio Logo">
         <h1>Kuxar Studio</h1>
@@ -175,31 +233,39 @@
         </div>
     </header>
 
+    <!-- SOBRE -->
     <section class="container" id="sobre">
         <h2>Sobre el Estudio</h2>
         <div class="card">
             <p>
-                Kuxar Studio es un estudio independiente especializado en desarrollo Android
-                y soluciones digitales modernas. Enfocado en tecnologías actuales como Kotlin,
-                arquitectura limpia y buenas prácticas del ecosistema móvil.
+                Estudio independiente especializado en desarrollo Android,
+                arquitectura moderna y creación de soluciones digitales eficientes.
             </p>
         </div>
     </section>
 
+    <!-- SKILLS -->
+    <section class="container">
+        <h2>Tecnologías</h2>
+        <div class="skills">
+            <div class="skill-badge">Android</div>
+            <div class="skill-badge">Kotlin</div>
+            <div class="skill-badge">MVVM</div>
+            <div class="skill-badge">Jetpack</div>
+            <div class="skill-badge">REST APIs</div>
+            <div class="skill-badge">Git</div>
+            <div class="skill-badge">UI / UX</div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
     <section class="container" id="contacto">
         <h2>Contacto</h2>
         <div class="card">
-            <p>Consultas técnicas, soporte o colaboraciones:</p>
+            <p>Email:</p>
+            <p><strong>jack.projekts@gmail.com</strong></p>
             <p style="margin-top:15px;">
-                <strong>Email:</strong>
-                <a href="mailto:jack.projekts@gmail.com" style="color:#00d4ff;">
-                    jack.projekts@gmail.com
-                </a>
-            </p>
-            <p style="margin-top:15px;">
-                <a href="privacy.html" style="color:#888;">
-                    Política de Privacidad
-                </a>
+                <a href="privacy.html">Política de Privacidad</a>
             </p>
         </div>
     </section>
@@ -207,6 +273,19 @@
     <footer>
         &copy; 2026 Kuxar Studio. Todos los derechos reservados.
     </footer>
+
+    <!-- THEME SCRIPT -->
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle("light");
+            localStorage.setItem("theme", document.body.classList.contains("light") ? "light" : "dark");
+        }
+
+        if (localStorage.getItem("theme") === "light") {
+            document.body.classList.add("light");
+        }
+    </script>
+
 
 </body>
 </html>
