@@ -61,53 +61,61 @@
             padding: 40px 20px;
         }
 
-        /* HEADER FIXED */
+        /* NAVBAR */
 
-.navbar {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    background: var(--bg-secondary);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border);
-    z-index: 1000;
-    transition: background 0.4s ease, border 0.4s ease;
-}
+        .navbar {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: var(--bg-secondary);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            transition: background 0.4s ease, border 0.4s ease;
+        }
 
         .nav-content {
             max-width: 1100px;
             margin: auto;
-            padding: 15px 20px;
+            padding: 14px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .nav-logo {
-            font-weight: 600;
+        .nav-logo img {
+            height: 34px;
+            display: block;
         }
 
         .theme-toggle {
             cursor: pointer;
             background: none;
             border: 1px solid var(--border);
-            padding: 6px 12px;
+            padding: 6px 14px;
             border-radius: 20px;
             color: var(--text-main);
+            transition: all 0.3s ease;
         }
+
+        .theme-toggle:hover {
+            border-color: var(--accent);
+        }
+
+        /* HERO */
 
         header {
             text-align: center;
-    padding: 140px 20px 100px;
+            padding: 130px 20px 100px;
             animation: fadeIn 1.2s ease forwards;
         }
 
-header img {
-    width: 170px;
-    margin-bottom: 25px;
-    animation: float 4s ease-in-out infinite;
-    filter: drop-shadow(0 10px 25px rgba(0,0,0,0.25));
-}
+        header img {
+            width: 170px;
+            margin-bottom: 25px;
+            animation: float 4s ease-in-out infinite;
+            filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.25));
+        }
 
         h1 {
             font-size: 3rem;
@@ -140,9 +148,17 @@ header img {
             color: white;
         }
 
+        .btn-primary:hover {
+            transform: translateY(-3px);
+        }
+
         .btn-secondary {
             border: 1px solid var(--border);
             color: var(--text-main);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
         }
 
         section {
@@ -200,16 +216,15 @@ header img {
             100% { transform: translateY(0px); }
         }
     </style>
-        
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-PC2C42LC0Z"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-PC2C42LC0Z');
-</script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PC2C42LC0Z"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-PC2C42LC0Z');
+    </script>
 
 </head>
 
@@ -218,9 +233,10 @@ header img {
     <!-- NAVBAR -->
     <div class="navbar">
         <div class="nav-content">
-<div class="nav-logo">
-    <img src="logo.png" alt="Kuxar Studio" style="height:32px;">
-</div>            <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+            <div class="nav-logo">
+                <img src="logo.png" alt="Kuxar Studio">
+            </div>
+            <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
         </div>
     </div>
 
@@ -277,18 +293,18 @@ header img {
         &copy; 2026 Kuxar Studio. Todos los derechos reservados.
     </footer>
 
-    <!-- THEME SCRIPT -->
     <script>
         function toggleTheme() {
             document.body.classList.toggle("light");
-            localStorage.setItem("theme", document.body.classList.contains("light") ? "light" : "dark");
+            localStorage.setItem("theme",
+                document.body.classList.contains("light") ? "light" : "dark"
+            );
         }
 
         if (localStorage.getItem("theme") === "light") {
             document.body.classList.add("light");
         }
     </script>
-
 
 </body>
 </html>
