@@ -4,12 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.google-analytics.com https://kuxarstudio.github.io; connect-src 'self' https://www.google-analytics.com;">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+
     <title>Kuxar Studio | Code · Apps · Programs</title>
 
     <meta name="description" content="Kuxar Studio es un estudio independiente enfocado en desarrollo Android y soluciones digitales modernas.">
+    <link rel="canonical" href="https://kuxarstudio.github.io/">
+
     <meta property="og:title" content="Kuxar Studio">
-    <meta property="og:description" content="Code · Apps · Programs">
+    <meta property="og:description" content="Code · Apps · Programs - Desarrollo Android Independiente">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kuxarstudio.github.io/">
+    <meta property="og:image" content="https://kuxarstudio.github.io/logo.png">
 
     <link rel="icon" type="image/png" href="logo.png">
 
@@ -42,7 +51,7 @@
 
         html {
             scroll-behavior: smooth;
-            /* IMPORTANTE: Evita que el título de las secciones quede oculto tras la navbar */
+            /* Evita que la navbar tape los títulos al navegar por los enlaces */
             scroll-padding-top: 80px;
         }
 
@@ -94,16 +103,17 @@
             border-radius: 20px;
             color: var(--text-main);
             transition: all 0.3s ease;
+            font-size: 1.1rem;
         }
 
         .theme-toggle:hover {
             border-color: var(--accent);
         }
 
-        /* HERO / HEADER (ARREGLADO) */
+        /* HERO / HEADER */
         header {
             text-align: center;
-            /* Aumentado de 130px a 180px para que el logo no sea cortado por la navbar */
+            /* Espacio suficiente para que el logo no sea cortado por la navbar fija */
             padding: 180px 20px 100px;
             animation: fadeIn 1.2s ease forwards;
         }
@@ -116,8 +126,9 @@
         }
 
         h1 {
-            font-size: clamp(2rem, 8vw, 3rem); /* Se adapta mejor a móviles */
+            font-size: clamp(2.2rem, 8vw, 3.5rem);
             font-weight: 800;
+            letter-spacing: -1px;
         }
 
         .tagline {
@@ -132,7 +143,7 @@
 
         .btn {
             display: inline-block;
-            padding: 14px 30px;
+            padding: 14px 32px;
             margin: 10px;
             border-radius: 40px;
             text-decoration: none;
@@ -144,11 +155,12 @@
         .btn-primary {
             background: linear-gradient(135deg, #6e00ff, #00d4ff);
             color: white;
+            box-shadow: 0 4px 15px rgba(110, 0, 255, 0.3);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(110, 0, 255, 0.2);
+            box-shadow: 0 8px 20px rgba(110, 0, 255, 0.4);
         }
 
         .btn-secondary {
@@ -158,6 +170,7 @@
 
         .btn-secondary:hover {
             border-color: var(--accent);
+            background: rgba(0, 212, 255, 0.05);
         }
 
         section {
@@ -167,6 +180,7 @@
         h2 {
             font-size: 1.8rem;
             margin-bottom: 30px;
+            font-weight: 700;
         }
 
         .card {
@@ -179,6 +193,7 @@
 
         .card:hover {
             transform: translateY(-6px);
+            border-color: rgba(0, 212, 255, 0.2);
         }
 
         .skills {
@@ -188,11 +203,12 @@
         }
 
         .skill-badge {
-            padding: 8px 16px;
+            padding: 8px 18px;
             border-radius: 30px;
             background: var(--bg-secondary);
             border: 1px solid var(--border);
             font-size: 0.9rem;
+            font-weight: 500;
         }
 
         footer {
@@ -211,10 +227,18 @@
 
         @keyframes float {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-12px); } /* Un poco más de movimiento */
+            50% { transform: translateY(-12px); }
             100% { transform: translateY(0px); }
         }
     </style>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PC2C42LC0Z"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-PC2C42LC0Z');
+    </script>
 </head>
 
 <body>
@@ -222,14 +246,14 @@
     <div class="navbar">
         <div class="nav-content">
             <div class="nav-logo">
-                <img src="logo.png" alt="Kuxar Studio">
+                <img src="logo.png" alt="Kuxar Studio Logo">
             </div>
-            <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙</button>
+            <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn" aria-label="Cambiar tema">🌙</button>
         </div>
     </div>
 
     <header class="container">
-        <img src="logo.png" alt="Kuxar Studio Logo">
+        <img src="logo.png" alt="Kuxar Studio Brand Logo">
         <h1>Kuxar Studio</h1>
         <p class="tagline">Code · Apps · Programs</p>
 
@@ -244,7 +268,8 @@
         <div class="card">
             <p>
                 Estudio independiente especializado en desarrollo Android,
-                arquitectura moderna y creación de soluciones digitales eficientes.
+                arquitectura moderna y creación de soluciones digitales eficientes. 
+                Enfocados en crear experiencias de usuario nativas y fluidas.
             </p>
         </div>
     </section>
@@ -255,7 +280,7 @@
             <div class="skill-badge">Android</div>
             <div class="skill-badge">Kotlin</div>
             <div class="skill-badge">MVVM</div>
-            <div class="skill-badge">Jetpack</div>
+            <div class="skill-badge">Jetpack Compose</div>
             <div class="skill-badge">REST APIs</div>
             <div class="skill-badge">Git</div>
             <div class="skill-badge">UI / UX</div>
@@ -265,10 +290,10 @@
     <section class="container" id="contacto">
         <h2>Contacto</h2>
         <div class="card">
-            <p>Email:</p>
+            <p style="color: var(--text-muted); margin-bottom: 5px;">Email de contacto:</p>
             <p><strong>jack.projekts@gmail.com</strong></p>
-            <p style="margin-top:15px;">
-                <a href="privacy.html" style="color: var(--accent); text-decoration: none;">Política de Privacidad</a>
+            <p style="margin-top:20px;">
+                <a href="privacy.html" style="color: var(--accent); text-decoration: none; font-weight: 600;">Política de Privacidad &rarr;</a>
             </p>
         </div>
     </section>
@@ -278,6 +303,7 @@
     </footer>
 
     <script>
+        // Lógica de cambio de tema
         function updateToggleButton(isLight) {
             document.getElementById("themeBtn").innerText = isLight ? "☀️" : "🌙";
         }
@@ -288,7 +314,7 @@
             updateToggleButton(isLight);
         }
 
-        // Cargar tema guardado
+        // Aplicar tema persistente al cargar
         if (localStorage.getItem("theme") === "light") {
             document.body.classList.add("light");
             updateToggleButton(true);
