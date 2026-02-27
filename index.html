@@ -32,8 +32,8 @@
     --text-muted: #a0a0a0;
     --border: #1f2433;
     --accent: #00d4ff;
-    /* --- AÑADE ESTA LÍNEA --- */
-    --navbar-height: 80px; 
+    /* Definimos la altura de la barra para usarla en cálculos */
+    --navbar-height: 70px; 
 }
 
         body.light {
@@ -72,12 +72,12 @@
         }
 
         /* NAVBAR */
-        .navbar {
+.navbar {
     position: fixed;
     width: 100%;
-    /* --- CAMBIA O AÑADE ESTA LÍNEA --- */
-    height: var(--navbar-height); 
     top: 0;
+    /* Forzamos la altura de la barra */
+    height: var(--navbar-height); 
     background: var(--bg-secondary);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
@@ -85,14 +85,16 @@
     transition: background 0.4s ease, border 0.4s ease;
 }
 
-        .nav-content {
-            max-width: 1100px;
-            margin: auto;
-            padding: 14px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+.nav-content {
+    max-width: 1100px;
+    margin: auto;
+    /* Ajustamos el padding para que el contenido de la barra esté centrado */
+    padding: 0 20px;
+    height: 100%; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
         .nav-logo img {
             height: 34px;
@@ -115,19 +117,20 @@
         }
 
         /* HERO / HEADER */
-        header {
+header {
     text-align: center;
-    /* --- CAMBIA ESTA LÍNEA --- */
-    padding: calc(var(--navbar-height) + 120px) 20px 100px; 
+    /* Aumentamos a 220px de espacio extra después de la barra */
+    padding: calc(var(--navbar-height) + 150px) 20px 100px; 
     animation: fadeIn 1.2s ease forwards;
 }
 
-        header img {
-            width: 170px;
-            margin-bottom: 25px;
-            animation: float 4s ease-in-out infinite;
-            filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.25));
-        }
+header img {
+    width: 170px;
+    margin-bottom: 25px;
+    /* Reducimos un poco la flotación para que no suba tanto */
+    animation: float 4s ease-in-out infinite;
+    filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.25));
+}
 
         h1 {
             font-size: clamp(2.2rem, 8vw, 3.5rem);
@@ -229,11 +232,11 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-12px); }
-            100% { transform: translateY(0px); }
-        }
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); } /* Movimiento más sutil */
+    100% { transform: translateY(0px); }
+}
     </style>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PC2C42LC0Z"></script>
