@@ -116,11 +116,11 @@
 
         /* HERO / HEADER */
         header {
-            text-align: center;
-            /* Espacio suficiente para que el logo no sea cortado por la navbar fija */
-            padding: 180px 20px 100px;
-            animation: fadeIn 1.2s ease forwards;
-        }
+    text-align: center;
+    /* --- CAMBIA ESTA LÍNEA --- */
+    padding: calc(var(--navbar-height) + 120px) 20px 100px; 
+    animation: fadeIn 1.2s ease forwards;
+}
 
         header img {
             width: 170px;
