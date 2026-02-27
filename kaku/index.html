@@ -6,27 +6,34 @@
     <title>Kaku! - Aprende Escritura Japonesa</title>
     <style>
         body { font-family: sans-serif; line-height: 1.6; text-align: center; padding: 50px 20px; background: #0b0d12; color: #eaeaea; }
-        .logo { width: 120px; margin-bottom: 20px; }
-        h1 { color: #00d4ff; font-size: 2.5rem; }
+        .logo { width: 120px; margin-bottom: 20px; border-radius: 20%; }
+        h1 { color: #00d4ff; font-size: 2.5rem; letter-spacing: 2px; }
         .description { max-width: 600px; margin: 0 auto 40px; color: #a0a0a0; }
-        .btn-download { background: #00d4ff; color: #0b0d12; padding: 15px 30px; border-radius: 30px; text-decoration: none; font-weight: bold; display: inline-block; }
+        .btn-download { background: #00d4ff; color: #0b0d12; padding: 15px 30px; border-radius: 30px; text-decoration: none; font-weight: bold; display: inline-block; transition: 0.3s; }
+        .btn-download:hover { background: #00b8e6; transform: scale(1.05); }
         footer { margin-top: 100px; font-size: 0.8rem; border-top: 1px solid #1f2433; padding-top: 20px; }
-        footer a { color: #00d4ff; text-decoration: none; margin: 0 10px; }
+        footer a { color: #00d4ff; text-decoration: none; margin: 0 10px; opacity: 0.7; }
+        footer a:hover { opacity: 1; text-decoration: underline; }
+        .footer-links { margin-top: 10px; }
     </style>
 </head>
 <body>
     <img src="../logo.png" alt="Kaku! Logo" class="logo">
     <h1>Kaku!</h1>
     <p class="description">
-        La herramienta definitiva para dominar el Hiragana, Katakana y Kanji. 
-        Practica tu trazo con reconocimiento en tiempo real y progresa a tu ritmo.
+        La herramienta definitiva para dominar el Hiragana, Katakana y Kanji.<br>
+        Practica tu trazo con reconocimiento en tiempo real, guarda tu progreso en la nube y conviértete en un experto.
     </p>
     
-    <a href="#" class="btn-download">Próximamente en Google Play</a>
+    <a href="#" class="btn-download">Disponible para Testers en Google Play</a>
 
     <footer>
         <p>&copy; 2026 Kuxar Studio</p>
-        <a href="privacy-policy.html">Política de Privacidad</a>
+        <div class="footer-links">
+            <a href="privacy-policy.html">Política de Privacidad</a>
+            <span>|</span>
+            <a href="delete-account.html">Eliminar cuenta</a>
+        </div>
     </footer>
 </body>
 </html>
