@@ -9,13 +9,13 @@
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
 
-    <title>Kuxar Studio | Code · Apps · Programs</title>
+    <title>Kuxar Studio | Code · Games · Apps</title>
 
-    <meta name="description" content="Kuxar Studio es un estudio independiente enfocado en desarrollo Android y soluciones digitales modernas.">
+    <meta name="description" content="Kuxar Studio es un estudio independiente enfocado en desarrollo de videojuegos con Godot, apps Android y soluciones digitales.">
     <link rel="canonical" href="https://kuxarstudio.github.io/">
 
     <meta property="og:title" content="Kuxar Studio">
-    <meta property="og:description" content="Code · Apps · Programs - Desarrollo Android Independiente">
+    <meta property="og:description" content="Code · Games · Apps - Desarrollo Independiente">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://kuxarstudio.github.io/">
     <meta property="og:image" content="https://kuxarstudio.github.io/logo.png">
@@ -32,6 +32,7 @@
             --text-muted: #a0a0a0;
             --border: #1f2433;
             --accent: #00d4ff;
+            --accent-game: #ffaa00; /* Color especial para el juego */
             --navbar-height: 70px; 
         }
 
@@ -42,6 +43,7 @@
             --text-muted: #555;
             --border: #e0e0e0;
             --accent: #0066ff;
+            --accent-game: #e67e22;
         }
 
         * {
@@ -206,6 +208,15 @@
             border-color: rgba(0, 212, 255, 0.2);
         }
 
+        /* Estilo especial para el juego destacado */
+        .card.featured {
+            border: 1px solid rgba(255, 170, 0, 0.3);
+            background: linear-gradient(145deg, var(--bg-secondary), #1a150b);
+        }
+        body.light .card.featured {
+            background: linear-gradient(145deg, var(--bg-secondary), #fffaf0);
+        }
+
         .skills {
             display: flex;
             flex-wrap: wrap;
@@ -230,6 +241,11 @@
             border-radius: 12px;
             margin-bottom: 10px;
             font-weight: 600;
+        }
+
+        .status-badge.dev {
+            background: rgba(255, 170, 0, 0.1);
+            color: var(--accent-game);
         }
 
         footer {
@@ -276,10 +292,10 @@
     <header class="container">
         <img src="logo.png" alt="Kuxar Studio Brand Logo">
         <h1>Kuxar Studio</h1>
-        <p class="tagline">Code · Apps · Programs</p>
+        <p class="tagline">Code · Games · Apps</p>
 
         <div class="hero-buttons">
-            <a href="#proyectos" class="btn btn-primary">Explorar Apps</a>
+            <a href="#proyectos" class="btn btn-primary">Explorar Proyectos</a>
             <a href="#contacto" class="btn btn-secondary">Contacto</a>
         </div>
     </header>
@@ -288,23 +304,35 @@
         <h2>Sobre el Estudio</h2>
         <div class="card">
             <p>
-                Estudio independiente especializado en desarrollo Android,
-                arquitectura moderna y creación de soluciones digitales eficientes. 
-                Enfocados en crear experiencias de usuario nativas y fluidas con las últimas tecnologías del ecosistema Google.
+                Estudio independiente especializado en el <b>desarrollo de videojuegos con Godot Engine</b> y aplicaciones nativas para Android. 
+                Enfocados en crear experiencias interactivas modernas, mecánicas fluidas y soluciones digitales eficientes desde España para el mundo.
             </p>
         </div>
     </section>
 
 <section class="container" id="proyectos">
-    <h2>Proyectos Destacados</h2>
+    <h2>Proyectos en Desarrollo</h2>
     <div class="grid-projects">
+        
+        <div class="card featured">
+            <div>
+                <span class="status-badge dev">En Desarrollo (Devlog)</span>
+                <h3 style="margin-bottom: 10px; font-size: 1.5rem; color: var(--accent-game);">Nadir: Protocol 1-Star</h3>
+                <p style="color: var(--text-muted); margin-bottom: 20px;">
+                    Un emocionante proyecto para móviles desarrollado en <b>Godot</b>. Explora el misterio del Protocolo 1-Star en esta experiencia diseñada para pantallas táctiles.
+                </p>
+            </div>
+            <a href="nadir/index.html" style="color: var(--accent-game); text-decoration: none; font-weight: 800; font-size: 0.9rem;">
+                VER PROGRESO DEL JUEGO (DEVLOG) &rarr;
+            </a>
+        </div>
         
         <div class="card">
             <div>
                 <span class="status-badge">Disponible para Testers</span>
                 <h3 style="margin-bottom: 10px; font-size: 1.5rem;">Kaku!</h3>
                 <p style="color: var(--text-muted); margin-bottom: 20px;">
-                    Domina la escritura japonesa. Aprende Hiragana, Katakana y Kanji con reconocimiento de trazos en tiempo real y progreso en la nube.
+                    Domina la escritura japonesa. Aprende Hiragana, Katakana y Kanji con reconocimiento de trazos en tiempo real.
                 </p>
             </div>
             <a href="kaku/index.html" style="color: var(--accent); text-decoration: none; font-weight: 600; font-size: 0.9rem;">
@@ -317,7 +345,7 @@
                 <span class="status-badge">Próximamente</span>
                 <h3 style="margin-bottom: 10px; font-size: 1.5rem;">BlindNote</h3>
                 <p style="color: var(--text-muted); margin-bottom: 20px;">
-                    El desafío definitivo para amantes de la música. Adivina canciones, compite en rankings y pon a prueba tu oído musical.
+                    El desafío definitivo para amantes de la música. Adivina canciones y compite en rankings globales.
                 </p>
             </div>
             <a href="blindnote/privacy-policy.html" style="color: var(--accent); text-decoration: none; font-weight: 600; font-size: 0.9rem;">
@@ -327,16 +355,18 @@
 
     </div>
 </section>
+
     <section class="container">
         <h2>Tecnologías</h2>
         <div class="skills">
+            <div class="skill-badge" style="border-color: var(--accent-game);">Godot Engine</div>
+            <div class="skill-badge" style="border-color: var(--accent-game);">GDScript</div>
             <div class="skill-badge">Android</div>
             <div class="skill-badge">Kotlin</div>
-            <div class="skill-badge">MVVM</div>
             <div class="skill-badge">Jetpack Compose</div>
-            <div class="skill-badge">Firebase / Firestore</div>
-            <div class="skill-badge">Git</div>
-            <div class="skill-badge">UI / UX</div>
+            <div class="skill-badge">Firebase</div>
+            <div class="skill-badge">Git / GitHub</div>
+            <div class="skill-badge">UI / UX Design</div>
         </div>
     </section>
 
