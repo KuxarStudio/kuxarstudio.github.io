@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nadir: Protocol 1-Star | Devlog - Kuxar Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #0b0d12;
+            --bg-secondary: #141824;
+            --text-main: #eaeaea;
+            --text-muted: #a0a0a0;
+            --accent: #ffaa00; /* Color naranja/ámbar para Nadir */
+            --border: #1f2433;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .container { max-width: 800px; margin: auto; padding: 40px 20px; }
+
+        /* Botón Volver */
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        .back-link:hover { color: var(--accent); }
+
+        /* Cabecera del Juego */
+        .game-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .game-header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+        }
+        .game-status {
+            display: inline-block;
+            padding: 4px 12px;
+            border: 1px solid var(--accent);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* Entradas del Devlog */
+        .devlog-entry {
+            position: relative;
+            padding-left: 30px;
+            border-left: 2px solid var(--border);
+            margin-bottom: 60px;
+        }
+        
+        /* Círculo de la línea de tiempo */
+        .devlog-entry::before {
+            content: '';
+            position: absolute;
+            left: -7px;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        .entry-date {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .entry-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+
+        .entry-content { padding: 25px; }
+
+        .entry-content h2 { margin-bottom: 15px; font-size: 1.4rem; }
+
+        .entry-image {
+            width: 100%;
+            display: block;
+            background: #1a1e2a; /* Placeholder mientras carga */
+            min-height: 200px;
+            object-fit: cover;
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px 0;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Responsivo */
+        @media (max-width: 600px) {
+            .game-header h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="../index.html" class="back-link">← Volver a Kuxar Studio</a>
+
+        <header class="game-header">
+            <span class="game-status">Fase: Pre-Alpha</span>
+            <h1>Nadir: Protocol 1-Star</h1>
+            <p style="color: var(--text-muted);">Diario de desarrollo de una odisea táctica móvil.</p>
+        </header>
+
+        <article class="devlog-entry">
+            <div class="entry-date">12 MARZO, 2026</div>
+            <div class="entry-card">
+                <img src="screenshot2.png" alt="Progreso en Godot" class="entry-image">
+                <div class="entry-content">
+                    <h2>Implementando el sistema de partículas</h2>
+                    <p>
+                        Esta semana me he centrado en los efectos visuales de los propulsores. Godot 4 facilita muchísimo el trabajo con <b>GPUParticles3D</b>. 
+                        He logrado un acabado que no penaliza el rendimiento en dispositivos gama media.
+                    </p>
+                </div>
+            </div>
+        </article>
+
+        <article class="devlog-entry">
+            <div class="entry-date">01 MARZO, 2026</div>
+            <div class="entry-card">
+                <img src="screenshot1.png" alt="Prototipo Inicial" class="entry-image">
+                <div class="entry-content">
+                    <h2>El nacimiento del Protocolo</h2>
+                    <p>
+                        ¡Primeras pruebas de movimiento finalizadas! El control táctico se siente fluido. 
+                        He configurado la estructura básica del proyecto y la jerarquía de escenas. Próximo paso: Inteligencia Artificial básica.
+                    </p>
+                </div>
+            </div>
+        </article>
+
+        <footer>
+            &copy; 2026 Kuxar Studio | Hecho con Godot & Pasión.
+        </footer>
+    </div>
+
+</body>
+</html>
