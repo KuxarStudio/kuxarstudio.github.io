@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nadir: Protocol 1-Star | Devlog - Kuxar Studio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-main: #0b0d12;
             --bg-secondary: #141824;
             --text-main: #eaeaea;
             --text-muted: #a0a0a0;
-            --accent: #ffaa00; /* Color naranja/ámbar para Nadir */
+            --accent: #ffaa00; 
             --border: #1f2433;
+            --code-font: 'JetBrains Mono', monospace;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -24,50 +25,81 @@
             line-height: 1.6;
         }
 
-        .container { max-width: 800px; margin: auto; padding: 40px 20px; }
+        .container { max-width: 900px; margin: auto; padding: 40px 20px; }
 
-        /* Botón Volver */
         .back-link {
             display: inline-block;
             margin-bottom: 30px;
             color: var(--text-muted);
             text-decoration: none;
             font-size: 0.9rem;
-            transition: color 0.3s;
         }
         .back-link:hover { color: var(--accent); }
 
-        /* Cabecera del Juego */
-        .game-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
+        /* Cabecera */
+        .game-header { text-align: center; margin-bottom: 40px; }
         .game-header h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             font-weight: 800;
             color: var(--accent);
             letter-spacing: -1px;
-            margin-bottom: 10px;
-        }
-        .game-status {
-            display: inline-block;
-            padding: 4px 12px;
-            border: 1px solid var(--accent);
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
+            margin-bottom: 5px;
         }
 
-        /* Entradas del Devlog */
+        /* Ficha Técnica Estilo Terminal */
+        .tech-briefing {
+            background: #0f111a;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 60px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            position: relative;
+        }
+
+        .tech-briefing::before {
+            content: "SYSTEM_SPECIFICATIONS_V1.0";
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: var(--bg-main);
+            padding: 0 10px;
+            font-family: var(--code-font);
+            font-size: 0.7rem;
+            color: var(--accent);
+            letter-spacing: 2px;
+        }
+
+        .tech-item { display: flex; flex-direction: column; }
+        .tech-label {
+            font-family: var(--code-font);
+            font-size: 0.65rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        .tech-value { font-size: 0.9rem; font-weight: 600; color: #fff; }
+
+        /* Highlight para el Sistema de Datos */
+        .data-driven-badge {
+            grid-column: 1 / -1;
+            background: rgba(255, 170, 0, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent);
+            font-size: 0.85rem;
+        }
+
+        /* Devlog Entries */
         .devlog-entry {
             position: relative;
-            padding-left: 30px;
+            padding-left: 35px;
             border-left: 2px solid var(--border);
-            margin-bottom: 60px;
+            margin-bottom: 80px;
         }
         
-        /* Círculo de la línea de tiempo */
         .devlog-entry::before {
             content: '';
             position: absolute;
@@ -77,89 +109,94 @@
             height: 12px;
             background: var(--accent);
             border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent);
         }
 
         .entry-date {
-            font-size: 0.85rem;
+            font-family: var(--code-font);
+            font-size: 0.8rem;
             color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
         }
 
         .entry-card {
             background: var(--bg-secondary);
             border: 1px solid var(--border);
-            border-radius: 16px;
+            border-radius: 20px;
             overflow: hidden;
-            margin-top: 15px;
+            transition: transform 0.3s ease;
         }
 
-        .entry-content { padding: 25px; }
+        .entry-content { padding: 30px; }
+        .entry-image { width: 100%; display: block; object-fit: cover; border-bottom: 1px solid var(--border); }
+        
+        h2 { margin-bottom: 15px; font-size: 1.6rem; letter-spacing: -0.5px; }
+        p { color: var(--text-muted); margin-bottom: 15px; }
 
-        .entry-content h2 { margin-bottom: 15px; font-size: 1.4rem; }
-
-        .entry-image {
-            width: 100%;
-            display: block;
-            background: #1a1e2a; /* Placeholder mientras carga */
-            min-height: 200px;
-            object-fit: cover;
-        }
-
-        footer {
-            text-align: center;
-            padding: 60px 0;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-
-        /* Responsivo */
-        @media (max-width: 600px) {
-            .game-header h1 { font-size: 1.8rem; }
-        }
+        footer { text-align: center; padding: 60px 0; color: var(--text-muted); font-size: 0.8rem; border-top: 1px solid var(--border); }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <a href="../index.html" class="back-link">← Volver a Kuxar Studio</a>
+        <a href="../index.html" class="back-link">← TERMINAL_EXIT</a>
 
         <header class="game-header">
-            <span class="game-status">Fase: Pre-Alpha</span>
             <h1>Nadir: Protocol 1-Star</h1>
-            <p style="color: var(--text-muted);">Diario de desarrollo de una odisea táctica móvil.</p>
+            <p style="color: var(--text-muted);">Diario de desarrollo · Mobile Project</p>
         </header>
 
-        <article class="devlog-entry">
-            <div class="entry-date">12 MARZO, 2026</div>
-            <div class="entry-card">
-                <img src="screenshot2.png" alt="Progreso en Godot" class="entry-image">
-                <div class="entry-content">
-                    <h2>Implementando el sistema de partículas</h2>
-                    <p>
-                        Esta semana me he centrado en los efectos visuales de los propulsores. Godot 4 facilita muchísimo el trabajo con <b>GPUParticles3D</b>. 
-                        He logrado un acabado que no penaliza el rendimiento en dispositivos gama media.
-                    </p>
-                </div>
+        <section class="tech-briefing">
+            <div class="tech-item">
+                <span class="tech-label">Core Engine</span>
+                <span class="tech-value">Godot 4.x (Vulkan Mobile)</span>
             </div>
-        </article>
+            <div class="tech-item">
+                <span class="tech-label">Environment</span>
+                <span class="tech-value">VS Code + Git Control</span>
+            </div>
+            <div class="tech-item">
+                <span class="tech-label">Primary Language</span>
+                <span class="tech-value">GDScript / Resources</span>
+            </div>
+            <div class="tech-item">
+                <span class="tech-label">Resolution</span>
+                <span class="tech-value">1920x1080 (Scalable)</span>
+            </div>
+            <div class="data-driven-badge">
+                <span class="tech-label">Arquitectura Especial</span><br>
+                <strong>Data-Oriented Design (DDD):</strong> Interfaz y lógica generadas dinámicamente mediante <code>Database.gd</code> e interpretación de archivos <code>.csv</code>. 0% Hardcoded.
+            </div>
+        </section>
 
         <article class="devlog-entry">
-            <div class="entry-date">01 MARZO, 2026</div>
-            <div class="entry-card">
-                <img src="screenshot1.png" alt="Prototipo Inicial" class="entry-image">
-                <div class="entry-content">
-                    <h2>El nacimiento del Protocolo</h2>
-                    <p>
-                        ¡Primeras pruebas de movimiento finalizadas! El control táctico se siente fluido. 
-                        He configurado la estructura básica del proyecto y la jerarquía de escenas. Próximo paso: Inteligencia Artificial básica.
-                    </p>
-                </div>
+    <div class="entry-date">01 MARZO, 2026 // INITIAL_BOOT</div>
+    <div class="entry-card">
+        <img src="nadir_start.png" alt="El inicio de Nadir" class="entry-image">
+        <div class="entry-content">
+            <h2>Nace el Protocolo Nadir</h2>
+            <p>
+                Después de semanas de experimentos, prototipos descartados y "trash tests" para entender las entrañas de <b>Godot 4</b>, hoy el proyecto finalmente tiene nombre y rumbo.
+            </p>
+
+            <p>
+                <b>Nadir: Protocol 1-Star</b> no es solo un juego; es el resultado de querer llevar la gestión táctica a un nivel más crudo y personal en dispositivos móviles. La idea es sencilla pero implacable: eres un "Maestro" dirigiendo a los olvidados, a esas unidades de una sola estrella que nadie quiere, en una ascensión donde el fracaso significa la desaparición total.
+            </p>
+
+            <p>
+                Hoy dejamos atrás las pruebas y empezamos el desarrollo real. La base está asentada y la visión es clara: una interfaz funcional, estética de terminal y una dificultad que no pide perdón. 
+            </p>
+            
+            <div style="font-family: var(--code-font); font-size: 0.8rem; color: var(--accent);">
+                > INICIALIZANDO_PROYECTO... [OK]<br>
+                > DEFINIENDO_ESTÉTICA... [EN PROCESO]
             </div>
-        </article>
+        </div>
+    </div>
+</article>
 
         <footer>
-            &copy; 2026 Kuxar Studio | Hecho con Godot & Pasión.
+            &copy; 2026 Kuxar Studio | SYSTEM_READY // NADIR_PROTOCOL
         </footer>
     </div>
 
