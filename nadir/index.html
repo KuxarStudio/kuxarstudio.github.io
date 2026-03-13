@@ -170,6 +170,40 @@
         </section>
 
         <article class="devlog-entry">
+            <div class="entry-date">13 MARZO, 2026 // TECH_REPORT_01</div>
+            <div class="entry-card">
+                <img src="devlog_02_tech.png" alt="Arquitectura Técnica Nadir" class="entry-image">
+                <div class="entry-content">
+                    <h2>LOG_002: El Cerebro Detrás del Protocolo</h2>
+                    <p>
+                        Tras los primeros pasos, el desarrollo ha entrado en una fase puramente estructural. No hay juego sin un sistema robusto, y en <b>Nadir</b> hemos optado por un enfoque 100% <b>Data-Driven Design (DDD)</b>.
+                    </p>
+
+                    <p>
+                        A diferencia de otros desarrollos, aquí nada está "hardcodeado". He implementado un script global llamado <code>Database.gd</code> que, al arrancar, interpreta múltiples hojas de cálculo <b>.csv</b>. Armas, enemigos, héroes y eventos se generan dinámicamente. Esto me permite balancear la dificultad del juego simplemente editando una tabla, sin tocar una sola línea de código.
+                    </p>
+
+                    <h3 style="color: var(--accent); font-size: 1rem; margin-top: 20px;">Especificaciones de la Misión:</h3>
+                    <ul style="margin-left: 20px; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;">
+                        <li><b>Motor:</b> Godot 4 con renderizador <b>Vulkan Mobile</b> para máxima optimización.</li>
+                        <li><b>Entorno:</b> Flujo de trabajo integrado con <b>Visual Studio</b> y control de versiones Git.</li>
+                        <li><b>Persistencia:</b> El sistema de <i>Permadeath</i> es real. Si una unidad muere, el código localiza y <b>elimina físicamente su archivo .tres</b>.</li>
+                        <li><b>Visuales:</b> Resolución base 1080p escalable mediante <code>canvas_items</code>.</li>
+                    </ul>
+
+                    <p>
+                        La arquitectura ya es capaz de gestionar la evolución de unidades de 1 a 7 estrellas y la herencia de estadísticas mediante la síntesis. El "esqueleto" está listo; ahora toca empezar a darle músculos.
+                    </p>
+                    
+                    <div style="background: rgba(255,170,0,0.1); padding: 10px; border-radius: 5px; font-family: var(--code-font); font-size: 0.8rem; border: 1px solid var(--border);">
+                        > DATABASE_LOAD: SUCCESS [9/9 TABLES]<br>
+                        > PERMADEATH_PROTOCOL: ACTIVE
+                    </div>
+                </div>
+            </div>
+        </article>
+        
+        <article class="devlog-entry">
     <div class="entry-date">01 MARZO, 2026 // INITIAL_BOOT</div>
     <div class="entry-card">
         <img src="nadir_start.png" alt="El inicio de Nadir" class="entry-image">
