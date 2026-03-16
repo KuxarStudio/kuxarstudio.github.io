@@ -14,6 +14,7 @@
             --accent: #ffaa00; 
             --border: #1f2433;
             --code-font: 'JetBrains Mono', monospace;
+            --danger: #ff4444;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -23,6 +24,7 @@
             background: var(--bg-main);
             color: var(--text-main);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .container { max-width: 900px; margin: auto; padding: 40px 20px; }
@@ -32,67 +34,108 @@
             margin-bottom: 30px;
             color: var(--text-muted);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
+            font-family: var(--code-font);
         }
         .back-link:hover { color: var(--accent); }
 
         /* Cabecera */
         .game-header { text-align: center; margin-bottom: 40px; }
         .game-header h1 {
-            font-size: 2.8rem;
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
             font-weight: 800;
             color: var(--accent);
             letter-spacing: -1px;
             margin-bottom: 5px;
         }
 
+        /* Barra de Progreso de la Misión */
+        .mission-progress {
+            margin-bottom: 40px;
+            background: var(--bg-secondary);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            font-family: var(--code-font);
+            font-size: 0.7rem;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+        .progress-bar-bg {
+            background: #000;
+            height: 6px;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .progress-bar-fill {
+            background: var(--accent);
+            height: 100%;
+            width: 71%; /* Fase 5 de 7 según GDD */
+            box-shadow: 0 0 10px var(--accent);
+        }
+
         /* Ficha Técnica Estilo Terminal */
         .tech-briefing {
-            background: #0f111a;
+            background: linear-gradient(180deg, #0f111a 0%, #05060a 100%);
             border: 1px solid var(--border);
             border-radius: 12px;
             padding: 25px;
             margin-bottom: 60px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 20px;
             position: relative;
+            overflow: hidden;
         }
 
-        .tech-briefing::before {
-            content: "SYSTEM_SPECIFICATIONS_V1.0";
+        .tech-briefing::after {
+            content: " ";
             position: absolute;
-            top: -10px;
-            left: 20px;
-            background: var(--bg-main);
-            padding: 0 10px;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+            background-size: 100% 4px;
+            pointer-events: none;
+        }
+
+        .permadeath-alert {
+            grid-column: 1 / -1;
+            color: var(--danger);
             font-family: var(--code-font);
             font-size: 0.7rem;
-            color: var(--accent);
-            letter-spacing: 2px;
+            border: 1px solid var(--danger);
+            padding: 8px;
+            text-align: center;
+            text-transform: uppercase;
+            animation: pulse 2s infinite;
         }
 
-        .tech-item { display: flex; flex-direction: column; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
+
+        .tech-item { display: flex; flex-direction: column; z-index: 1; }
         .tech-label {
             font-family: var(--code-font);
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             color: var(--accent);
             text-transform: uppercase;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
-        .tech-value { font-size: 0.9rem; font-weight: 600; color: #fff; }
+        .tech-value { font-size: 0.85rem; font-weight: 600; }
 
-        /* Highlight para el Sistema de Datos */
         .data-driven-badge {
             grid-column: 1 / -1;
-            background: rgba(255, 170, 0, 0.1);
+            background: rgba(255, 170, 0, 0.05);
             padding: 15px;
             border-radius: 8px;
             border-left: 3px solid var(--accent);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
+            z-index: 1;
         }
 
-        /* Devlog Entries */
+        /* Entradas del Devlog */
         .devlog-entry {
             position: relative;
             padding-left: 35px;
@@ -114,7 +157,7 @@
 
         .entry-date {
             font-family: var(--code-font);
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--accent);
             margin-bottom: 10px;
         }
@@ -124,14 +167,13 @@
             border: 1px solid var(--border);
             border-radius: 20px;
             overflow: hidden;
-            transition: transform 0.3s ease;
         }
 
         .entry-content { padding: 30px; }
         .entry-image { width: 100%; display: block; object-fit: cover; border-bottom: 1px solid var(--border); }
         
-        h2 { margin-bottom: 15px; font-size: 1.6rem; letter-spacing: -0.5px; }
-        p { color: var(--text-muted); margin-bottom: 15px; }
+        h2 { margin-bottom: 15px; font-size: 1.5rem; letter-spacing: -0.5px; }
+        p { color: var(--text-muted); margin-bottom: 15px; font-size: 0.95rem; }
 
         footer { text-align: center; padding: 60px 0; color: var(--text-muted); font-size: 0.8rem; border-top: 1px solid var(--border); }
     </style>
@@ -146,26 +188,41 @@
             <p style="color: var(--text-muted);">Diario de desarrollo · Mobile Project</p>
         </header>
 
+        <section class="mission-progress">
+            <div class="progress-header">
+                <span>OBJETIVO: ASCENSIÓN - FASE 5 (LA TORRE)</span>
+                <span>71% COMPLETE</span>
+            </div>
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill"></div>
+            </div>
+        </section>
+
         <section class="tech-briefing">
+            <div class="permadeath-alert">
+                ⚠️ Protocolo Permadeath: Borrado físico de .tres activo
+            </div>
+            
             <div class="tech-item">
-                <span class="tech-label">Core Engine</span>
-                <span class="tech-value">Godot 4.x (Vulkan Mobile)</span>
+                <span class="tech-label">Engine</span>
+                <span class="tech-value">Godot 4.x / Vulkan</span>
             </div>
             <div class="tech-item">
-                <span class="tech-label">Environment</span>
-                <span class="tech-value">VS Code + Git Control</span>
+                <span class="tech-label">Persistencia</span>
+                <span class="tech-value">Encodable .data</span>
             </div>
             <div class="tech-item">
-                <span class="tech-label">Primary Language</span>
-                <span class="tech-value">GDScript / Resources</span>
+                <span class="tech-label">Resolución</span>
+                <span class="tech-value">1080p Scalable</span>
             </div>
             <div class="tech-item">
-                <span class="tech-label">Resolution</span>
-                <span class="tech-value">1920x1080 (Scalable)</span>
+                <span class="tech-label">AFK Sync</span>
+                <span class="tech-value">Unix Time System</span>
             </div>
+            
             <div class="data-driven-badge">
                 <span class="tech-label">Arquitectura Especial</span><br>
-                <strong>Data-Oriented Design (DDD):</strong> Interfaz y lógica generadas dinámicamente mediante <code>Database.gd</code> e interpretación de archivos <code>.csv</code>. 0% Hardcoded.
+                <strong>Data-Driven Design:</strong> Lógica centralizada en <code>Database.gd</code>. Balanceo dinámico mediante lectura de archivos <code>.csv</code> (Armas, Enemigos, Héroes).
             </div>
         </section>
 
@@ -176,90 +233,44 @@
                 <div class="entry-content">
                     <h2>LOG_003: La Plaza y el Orden del Caos</h2>
                     <p>
-                        Esta semana hemos alcanzado un hito crítico en el Roadmap: el despliegue de la <b>Fase 4</b>. Hemos pasado de la abstracción de los archivos CSV a un entorno visual interactivo. <b>La Plaza</b> ya es una realidad funcional.
+                        Esta semana hemos alcanzado un hito crítico: el despliegue de la <b>Fase 4</b>. Hemos pasado de la abstracción de los archivos CSV a un entorno visual interactivo. <b>La Plaza</b> ya es una realidad funcional.
                     </p>
-
                     <p>
-                        Aunque visualmente utilizamos bloques como <i>placeholders</i>, la lógica subyacente es robusta. Hemos implementado el acceso al <b>Almacén</b> mediante una UI dinámica que itera sobre las <i>keys</i> de un Diccionario Global, garantizando que el inventario sea siempre fiel a la persistencia de datos. Además, hemos aplicado un sistema de <b>"Fix Matrix"</b> para asegurar una limpieza visual instantánea en los pop-ups, evitando solapamientos entre las distintas estancias (Herrería, Cocina y Taller).
+                        Hemos implementado el sistema de <b>"Fix Matrix"</b> para asegurar una limpieza visual en los pop-ups, evitando solapamientos entre edificios como la Herrería o el Almacén. La UI del inventario ahora itera sobre las <i>keys</i> de un Diccionario Global para mostrar los materiales en tiempo real.
                     </p>
-
                     <p>
-                        Los héroes invocados ya no son solo recursos en disco; ahora habitan la plaza. El sistema de instanciado dinámico les permite deambular y expresar su estado actual. Es el primer paso real hacia el sistema de <b>Voluntad Propia</b>: sus diálogos sobre la escasez de comida o el miedo al entorno no son aleatorios, sino indicadores del ecosistema <i>hardcore</i> que estamos construyendo.
+                        Los héroes ya habitan la plaza y muestran sus primeras líneas de diálogo, un preludio del sistema de <b>Voluntad Propia</b>.
                     </p>
-
-                    <div style="background: rgba(255,170,0,0.05); border-left: 2px solid var(--accent); padding: 15px; margin: 15px 0;">
-                        <h4 style="color: var(--accent); font-size: 0.9rem; text-transform: uppercase; font-family: var(--code-font);">Informe de Ingeniería</h4>
-                        <p style="font-size: 0.8rem; margin-bottom: 0; color: var(--text-muted);">
-                            <b>Sistema de Navegación:</b> Implementado mediante meta-datos en el árbol de escenas para transiciones inteligentes entre la Plaza y los edificios. <br>
-                            <b>UI Dinámica:</b> Los contenedores de información ahora se auto-pueblan filtrando tipos de materiales (Ingredientes, Piedras, Equipo) en tiempo real.
-                        </p>
-                    </div>
-
-                    <div style="background: #0f111a; padding: 12px; border-radius: 8px; font-family: var(--code-font); font-size: 0.75rem; border: 1px solid var(--border);">
-                        <span style="color: var(--accent);">[SISTEMA]</span> Fase 4.0: Operativa <br>
-                        <span style="color: var(--accent);">[PRÓXIMO]</span> Fase 4.1: La Grieta y Expediciones AFK
-                    </div>
                 </div>
             </div>
         </article>
-        
+
         <article class="devlog-entry">
             <div class="entry-date">13 MARZO, 2026 // TECH_REPORT_01</div>
             <div class="entry-card">
                 <div class="entry-content">
                     <h2>LOG_002: El Cerebro Detrás del Protocolo</h2>
                     <p>
-                        Tras los primeros pasos, el desarrollo ha entrado en una fase puramente estructural. No hay juego sin un sistema robusto, y en <b>Nadir</b> hemos optado por un enfoque 100% <b>Data-Driven Design (DDD)</b>.
+                        Consolidación de la arquitectura <b>Data-Driven Design (DDD)</b>. El juego ahora es capaz de interpretar múltiples hojas de cálculo <code>.csv</code> al arrancar, poblando dinámicamente el mundo sin datos <i>hardcodeados</i>.
                     </p>
-
                     <p>
-                        A diferencia de otros desarrollos, aquí nada está "hardcodeado". He implementado un script global llamado <code>Database.gd</code> que, al arrancar, interpreta múltiples hojas de cálculo <b>.csv</b>. Armas, enemigos, héroes y eventos se generan dinámicamente. Esto me permite balancear la dificultad del juego simplemente editando una tabla, sin tocar una sola línea de código.
+                        Se ha establecido el sistema de <b>Muerte Permanente</b> definitiva: el motor localiza y elimina físicamente el archivo de recurso del héroe al ser derrotado.
                     </p>
-
-                    <h3 style="color: var(--accent); font-size: 1rem; margin-top: 20px;">Especificaciones de la Misión:</h3>
-                    <ul style="margin-left: 20px; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;">
-                        <li><b>Motor:</b> Godot 4 con renderizador <b>Vulkan Mobile</b> para máxima optimización.</li>
-                        <li><b>Entorno:</b> Flujo de trabajo integrado con <b>Visual Studio</b> y control de versiones Git.</li>
-                        <li><b>Persistencia:</b> El sistema de <i>Permadeath</i> es real. Si una unidad muere, el código localiza y <b>elimina físicamente su archivo .tres</b>.</li>
-                        <li><b>Visuales:</b> Resolución base 1080p escalable mediante <code>canvas_items</code>.</li>
-                    </ul>
-
-                    <p>
-                        La arquitectura ya es capaz de gestionar la evolución de unidades de 1 a 7 estrellas y la herencia de estadísticas mediante la síntesis. El "esqueleto" está listo; ahora toca empezar a darle músculos.
-                    </p>
-                    
-                    <div style="background: rgba(255,170,0,0.1); padding: 10px; border-radius: 5px; font-family: var(--code-font); font-size: 0.8rem; border: 1px solid var(--border);">
-                        > DATABASE_LOAD: SUCCESS [9/9 TABLES]<br>
-                        > PERMADEATH_PROTOCOL: ACTIVE
-                    </div>
                 </div>
             </div>
         </article>
-        
+
         <article class="devlog-entry">
-    <div class="entry-date">01 MARZO, 2026 // INITIAL_BOOT</div>
-    <div class="entry-card">
-        <div class="entry-content">
-            <h2>Nace el Protocolo Nadir</h2>
-            <p>
-                Después de semanas de experimentos, prototipos descartados y "trash tests" para entender las entrañas de <b>Godot 4</b>, hoy el proyecto finalmente tiene nombre y rumbo.
-            </p>
-
-            <p>
-                <b>Nadir: Protocol 1-Star</b> no es solo un juego; es el resultado de querer llevar la gestión táctica a un nivel más crudo y personal en dispositivos móviles. La idea es sencilla pero implacable: eres un "Maestro" dirigiendo a los olvidados, a esas unidades de una sola estrella que nadie quiere, en una ascensión donde el fracaso significa la desaparición total.
-            </p>
-
-            <p>
-                Hoy dejamos atrás las pruebas y empezamos el desarrollo real. La base está asentada y la visión es clara: una interfaz funcional, estética de terminal y una dificultad que no pide perdón. 
-            </p>
-            
-            <div style="font-family: var(--code-font); font-size: 0.8rem; color: var(--accent);">
-                > INICIALIZANDO_PROYECTO... [OK]<br>
-                > DEFINIENDO_ESTÉTICA... [EN PROCESO]
+            <div class="entry-date">01 MARZO, 2026 // INITIAL_BOOT</div>
+            <div class="entry-card">
+                <div class="entry-content">
+                    <h2>LOG_001: Nace el Protocolo Nadir</h2>
+                    <p>
+                        Tras semanas de prototipos descartados en Godot 4, el proyecto toma forma oficial. La visión: un Survival RPG táctico para móviles con estética de terminal y una dificultad que no perdona errores. Hoy dejamos atrás las pruebas y empezamos el desarrollo real.
+                    </p>
+                </div>
             </div>
-        </div>
-    </div>
-</article>
+        </article>
 
         <footer>
             &copy; 2026 Kuxar Studio | SYSTEM_READY // NADIR_PROTOCOL
