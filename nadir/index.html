@@ -170,33 +170,35 @@
         </section>
 
         <article class="devlog-entry">
-            <div class="entry-date">16 MARZO, 2026 // BASE_PROTO_01</div>
+            <div class="entry-date">16 MARZO, 2026 // PHASE_04_DEPLOY</div>
             <div class="entry-card">
                 <img src="captura_plaza_16_03.png" alt="Prototipo Visual de la Base/Plaza" class="entry-image">
                 <div class="entry-content">
-                    <h2>LOG_003: Construyendo los Cimientos</h2>
+                    <h2>LOG_003: La Plaza y el Orden del Caos</h2>
                     <p>
-                        Esta semana ha sido clave. Hemos dado el salto de la pura lógica de base de datos a tener un entorno visual funcional: <b>La Plaza</b> o Base del Jugador.
+                        Esta semana hemos alcanzado un hito crítico en el Roadmap: el despliegue de la <b>Fase 4</b>. Hemos pasado de la abstracción de los archivos CSV a un entorno visual interactivo. <b>La Plaza</b> ya es una realidad funcional.
                     </p>
 
                     <p>
-                        En esta primera iteración <i>pre-alpha</i>, como podéis ver, hemos utilizado bloques de colores como marcadores de posición para los futuros edificios. No os dejéis engañar por su simplicidad; cada bloque ya representa un sistema estratégico que pronto cobraá vida. De hecho, el acceso al <b>Almacén</b> ya está visible en la esquina superior derecha.
+                        Aunque visualmente utilizamos bloques como <i>placeholders</i>, la lógica subyacente es robusta. Hemos implementado el acceso al <b>Almacén</b> mediante una UI dinámica que itera sobre las <i>keys</i> de un Diccionario Global, garantizando que el inventario sea siempre fiel a la persistencia de datos. Además, hemos aplicado un sistema de <b>"Fix Matrix"</b> para asegurar una limpieza visual instantánea en los pop-ups, evitando solapamientos entre las distintas estancias (Herrería, Cocina y Taller).
                     </p>
 
                     <p>
-                        Pero lo más emocionante es ver a nuestros héroes cobrando vida. Hemos implementado el sistema de invocación y, como podéis apreciar en la captura, ¡ya empiezan a interactuar! Aunque el arte es muy básico, la personalidad de nuestros 'una estrella' empieza a asomar.
+                        Los héroes invocados ya no son solo recursos en disco; ahora habitan la plaza. El sistema de instanciado dinámico les permite deambular y expresar su estado actual. Es el primer paso real hacia el sistema de <b>Voluntad Propia</b>: sus diálogos sobre la escasez de comida o el miedo al entorno no son aleatorios, sino indicadores del ecosistema <i>hardcore</i> que estamos construyendo.
                     </p>
 
                     <div style="background: rgba(255,170,0,0.05); border-left: 2px solid var(--accent); padding: 15px; margin: 15px 0;">
-                        <h4 style="color: var(--accent); font-size: 0.9rem; text-transform: uppercase;">Estado de la Misión</h4>
-                        <p style="font-size: 0.8rem; margin-bottom: 0;">
-                            Los héroes ya tienen sus propias preocupaciones. En la imagen, uno de ellos se pregunta: <i>"¿Alguien tiene algo de comida?"</i>, mientras que otro confiesa que <i>"Este lugar me da escalofríos."</i>. Este es el primer paso para el sistema de 'Voluntad Propia' que prometimos.
+                        <h4 style="color: var(--accent); font-size: 0.9rem; text-transform: uppercase; font-family: var(--code-font);">Informe de Ingeniería</h4>
+                        <p style="font-size: 0.8rem; margin-bottom: 0; color: var(--text-muted);">
+                            <b>Sistema de Navegación:</b> Implementado mediante meta-datos en el árbol de escenas para transiciones inteligentes entre la Plaza y los edificios. <br>
+                            <b>UI Dinámica:</b> Los contenedores de información ahora se auto-pueblan filtrando tipos de materiales (Ingredientes, Piedras, Equipo) en tiempo real.
                         </p>
                     </div>
 
-                    <p>
-                        El próximo paso es empezar a darles tareas y pulir la estética para que parezca de verdad una interfaz de terminal futurista.
-                    </p>
+                    <div style="background: #0f111a; padding: 12px; border-radius: 8px; font-family: var(--code-font); font-size: 0.75rem; border: 1px solid var(--border);">
+                        <span style="color: var(--accent);">[SISTEMA]</span> Fase 4.0: Operativa <br>
+                        <span style="color: var(--accent);">[PRÓXIMO]</span> Fase 4.1: La Grieta y Expediciones AFK
+                    </div>
                 </div>
             </div>
         </article>
