@@ -227,6 +227,39 @@
         </section>
 
         <article class="devlog-entry">
+            <div class="entry-date">23 MARZO, 2026 // HERO_MGMT_V1</div>
+            <div class="entry-card">
+                <img src="captura_portal_23_03.png" alt="Sistema de Invocación y Cartas" class="entry-image">
+                <div class="entry-content">
+                    <h2>LOG_004: El Camino del Perdedor</h2>
+                    <p>
+                        Esta semana nos hemos centrado en el pilar fundamental de la progresión: <b>El Portal y el Cuartel</b>. En Nadir, nadie es especial al principio. El sistema de gestión está diseñado para que sientas el peso de convertir una unidad básica en una leyenda de 7 estrellas.
+                    </p>
+
+                    <p>
+                        <b>El Portal (Gacha):</b> Hemos finalizado la lógica de invocación. No es solo azar; el sistema inyecta dinámicamente elementos raros como <i>Caos</i> o <i>Sangre</i> para alterar las probabilidades de los atributos iniciales. Visualmente, las <b>Cartas de Héroe</b> ahora reaccionan a su rareza con colores dinámicos, culminando en el acabado <i>Platino</i> exclusivo para las unidades que logran alcanzar las 7 estrellas.
+                    </p>
+
+                    <p>
+                        <b>El Cuartel (Roster):</b> Técnicamente, este ha sido el mayor reto de la semana. Hemos pulido un script de <b>Población Automática</b> que lee masivamente los archivos <code>.tres</code> de la carpeta de usuario, los ordena por poder y los muestra en una cuadrícula optimizada. Además, hemos implementado un sistema de <b>Filtros Inteligentes</b> para que, al asignar escuadrones, el juego oculte automáticamente las armas que ya están equipadas por otros maestros.
+                    </p>
+
+                    <div style="background: rgba(255,170,0,0.05); border-left: 2px solid var(--accent); padding: 15px; margin: 15px 0;">
+                        <h4 style="color: var(--accent); font-size: 0.9rem; text-transform: uppercase; font-family: var(--code-font);">Debug de Desarrollo</h4>
+                        <p style="font-size: 0.8rem; margin-bottom: 0; color: var(--text-muted);">
+                            <b>Optimización de Memoria:</b> La pantalla de "Detalle del Héroe" ahora usa un sistema de plantillas <i>UI-heavy</i> que solo carga los datos necesarios del <code>Resource</code> al hacer clic, manteniendo el uso de RAM bajo mínimos en dispositivos móviles.
+                        </p>
+                    </div>
+
+                    <div style="background: #0f111a; padding: 12px; border-radius: 8px; font-family: var(--code-font); font-size: 0.75rem; border: 1px solid var(--border);">
+                        <span style="color: var(--accent);">[SISTEMA]</span> Fase 1 & 2: Consolidadas <br>
+                        <span style="color: var(--accent);">[PRÓXIMO]</span> Fase 3: El Laboratorio de Síntesis (Herencia de Stats)
+                    </div>
+                </div>
+            </div>
+        </article>
+        
+        <article class="devlog-entry">
             <div class="entry-date">16 MARZO, 2026 // PHASE_04_DEPLOY</div>
             <div class="entry-card">
                 <img src="captura_plaza_16_03.png" alt="Prototipo Visual de la Base/Plaza" class="entry-image">
