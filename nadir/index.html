@@ -135,6 +135,38 @@
             z-index: 1;
         }
 
+        /* SECCIÓN FAQ */
+        .faq-section {
+            margin-top: 80px;
+            padding: 40px;
+            background: rgba(255, 170, 0, 0.02);
+            border: 1px double var(--border);
+            border-radius: 20px;
+        }
+        .faq-grid {
+            display: grid;
+            gap: 25px;
+            margin-top: 30px;
+        }
+        .faq-item h3 {
+            font-family: var(--code-font);
+            font-size: 0.9rem;
+            color: var(--accent);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+        .faq-item p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+        .faq-header {
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+        
         /* Entradas del Devlog */
         .devlog-entry {
             position: relative;
@@ -305,6 +337,40 @@
             </div>
         </article>
 
+        <section class="faq-section">
+            <div class="faq-header">
+                <h2 style="font-size: 1.5rem; color: var(--accent);">[?] PROTOCOLOS_FRECUENTES</h2>
+                <p style="font-size: 0.8rem; font-family: var(--code-font);">MANUAL DE CONSULTA PARA EL MAESTRO</p>
+            </div>
+
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>¿Qué es Nadir: Protocol 1-Star?</h3>
+                    <p>Es un RPG táctico de supervivencia para móviles. El jugador gestiona unidades de baja rareza (1 estrella) en una ascensión implacable por una Torre, combinando gestión de base, auto-battler y decisiones críticas.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>¿Realmente se borran los archivos de las unidades?</h3>
+                    <p>Afirmativo. El sistema de <b>Muerte Permanente (Permadeath)</b> es físico. Si una unidad muere en combate, el motor localiza su archivo de recurso (.tres) y lo elimina permanentemente del dispositivo. No hay puntos de control.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>¿Cómo progresa una unidad de 1 estrella?</h3>
+                    <p>Mediante el Altar de Ascensión y la Síntesis de Sacrificio. Las unidades pueden heredar estadísticas y habilidades de otras, rompiendo sus límites hasta alcanzar el rango de 7 estrellas (Platino).</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>¿En qué tecnología está desarrollado?</h3>
+                    <p>El núcleo del juego utiliza <b>Godot Engine 4</b> con renderizado Vulkan Mobile. Toda la lógica de datos es 100% dinámica (Data-Driven Design) mediante archivos CSV y scripts optimizados en GDScript.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>¿Cuándo estará disponible?</h3>
+                    <p>Actualmente el proyecto se encuentra en <b>Fase 5 (La Torre)</b>. Realizaremos pruebas técnicas cerradas próximamente. Puedes seguir el progreso semanal en este Devlog.</p>
+                </div>
+            </div>
+        </section>
+        
         <footer>
             &copy; 2026 Kuxar Studio | SYSTEM_READY // NADIR_PROTOCOL
         </footer>
